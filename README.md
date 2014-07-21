@@ -8,7 +8,11 @@ Gulp settings for very basic tasks below:
 ## 1. Processing Sass
 It processes .scss files in `dev` and output .css in `css`.  It also outputs the source map file main.css.map in `css`.  Source map URLs are wrong for the @import files for the moment.  I think it is a rubySass bug and hope it will be fixed.
 
-To enable the source map, main.scss need to have the following line at the end:
+- Process .scss files using gulp-ruby-sass and partials in `scss/components`
+- Adds browser prefixes using gulp-autoprefixer
+- Outputs source map file called main.css.map using gulp-ruby-sass
+
+To enable source map, main.scss needs to have the following line at the end:
 ```
 /*# sourceMappingURL=main.css.map */
 ```

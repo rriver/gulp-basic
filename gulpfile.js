@@ -1,8 +1,8 @@
 /**
 Gulp to:
-1. Start the browser sync
-2. Process Sass files
-3. Reload browser when any files (HTML, CSS, JS) are edited
+1. Process Sass files
+2. Optimize images
+3. Reload browser when any files (HTML, SCSS, Images) are edited
 **/
 
 'use strict';
@@ -28,31 +28,31 @@ var AUTOPREFIXER_BROWSERS = [
 
 // Start BrowserSync
 gulp.task('bs', function() {
-	browserSync({
-		notify: false,
-		server: {
-			baseDir: 'dev'
-		}
-	});
+  browserSync({
+    notify: false,
+    server: {
+      baseDir: 'dev'
+    }
+  });
 
-	gulp.watch(['dev/**/*.html'], reload);
-	gulp.watch(['dev/**/*.scss'], ['sass']);
-	gulp.watch(['dev/img/*'], reload);
+  gulp.watch(['dev/**/*.html'], reload);
+  gulp.watch(['dev/**/*.scss'], ['sass']);
+  gulp.watch(['dev/img/*'], reload);
 });
 
 // Process Sass and notify with Mac notification if any errors
 gulp.task('sass', function () {
-	return gulp.src('dev/scss/*.scss')
-		.pipe($.rubySass({
-	    	sourcemap: true,
-	    	sourcemapPath: '../dev/scss',
-	    	style: 'compact',
-	    	precision: 4,
-	    	loadPath: process.cwd() + '/dev/scss'
-	    }))
-	    .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
-	    .pipe(gulp.dest('dev/css'))
-	    .pipe(reload({stream:true}));
+  return gulp.src('dev/scss/*.scss')
+    .pipe($.rubySass({
+      sourcemap: true,
+      sourcemapPath: '../dev/scss',
+      style: 'compact',
+      precision: 4,
+      loadPath: process.cwd() + '/dev/scss'
+    }))
+    .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
+    .pipe(gulp.dest('dev/css'))
+    .pipe(reload({stream:true}));
 });
 
 // Optimize images in the img folders anywhere
