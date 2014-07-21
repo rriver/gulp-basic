@@ -11,3 +11,4 @@ dist
 
 # Project specific
 gulpfile-*.js
+main.css.map
