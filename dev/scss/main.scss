@@ -1,0 +1,28 @@
+@import "components/html5bp";
+@import "components/normalize";
+
+/*
+main.scss
+For testing the gulp settings.
+*/
+
+body { background: #fff; }
+
+h1, p {
+	margin: 0;
+	padding: 0;
+}
+
+h1 { margin: 0.3em 0; }
+p, img {
+	margin-bottom: 2em;
+}
+
+img {
+	width: 100%;
+	height: auto;
+}
+
+@import "components/grid";
+
+/*# sourceMappingURL=main.css.map */

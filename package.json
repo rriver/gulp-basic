@@ -1,0 +1,26 @@
+{
+  "name": "gulp-basic",
+  "version": "0.0.1",
+  "description": "Gulp to Uncss, Sass, and BrowserSync",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rriver",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^1.3.0",
+    "gulp": "^3.8.6",
+    "gulp-autoprefixer": "0.0.8",
+    "gulp-cache": "^0.2.0",
+    "gulp-imagemin": "^0.6.1",
+    "gulp-load-plugins": "^0.5.3",
+    "gulp-newer": "^0.3.0",
+    "gulp-notify": "^1.4.0",
+    "gulp-ruby-sass": "^0.6.0",
+    "gulp-sass": "^0.7.2",
+    "gulp-size": "^0.4.0",
+    "gulp-uncss": "^0.4.5",
+    "run-sequence": "^0.3.6"
+  }
+}

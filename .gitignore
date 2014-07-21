@@ -1,0 +1,13 @@
+# Folders to ignore
+bower_components
+node_modules
+dist
+.sass-cache
+
+# OS or Editor folders
+.DS_Store
+.sublime-project
+.sublime-workspace
+
+# Project specific
+gulpfile-*.js
