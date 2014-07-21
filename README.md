@@ -26,7 +26,7 @@ It optimizes the images in `dev/img` and output them in `dist/img`.
 
 ### Command to run the task:
 
-	$ gulp images
+	$ gulp img
 
 ## 3. Reloading browser
 Using BrowserSync, it runs a relevant task and reloads the browser when any of the following files are updated:
