@@ -17,10 +17,14 @@ To enable source map, main.scss needs to have the following line at the end:
 /*# sourceMappingURL=main.css.map */
 ```
 
+Command to run the task:
+
 	$ gulp sass
 
 ## 2. Optimizing images
 It optimizes the images in `dev/img` and output them in `dist/img`.
+
+Command to run the task:
 
 	$ gulp images
 
@@ -30,5 +34,6 @@ Using BrowserSync, it runs a relevant task and reloads the browser when any of t
 - Runs the sass task and reloads when .scss files in `dev/scss` are updated
 - Reloads when any image files are updated in `dev/img`
 
+Command to run the task:
+
 	$ gulp bs
- 
