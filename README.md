@@ -8,6 +8,11 @@ Gulp settings for very basic tasks below:
 ## 1. Processing Sass
 It processes .scss files in `dev` and output .css in `css`.  It also outputs the source map file main.css.map in `css`.  Source map URLs are wrong for the @import files for the moment.  I think it is a rubySass bug and hope it will be fixed.
 
+To enable the source map, main.scss need to have the following line at the end:
+```
+/*# sourceMappingURL=main.css.map */
+```
+
 ## 2. Optimizing images
 It optimizes the images in `dev/img` and output them in `dist/img`.
 

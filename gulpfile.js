@@ -10,7 +10,6 @@ Gulp to:
 // Load modules
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
-var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
