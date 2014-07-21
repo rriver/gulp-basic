@@ -37,3 +37,7 @@ Using BrowserSync, it runs a relevant task and reloads the browser when any of t
 ### Command to run the task:
 
 	$ gulp bs
+
+## ToDos in random order
+1. Optimize all files including HTML and concatenated JS files  and copy them to `dist` when all is well and done
+2. Clean up CSS using gulp-uncss
