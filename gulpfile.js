@@ -38,6 +38,7 @@ gulp.task('bs', function() {
 
   gulp.watch(['dev/**/*.html'], reload);
   gulp.watch(['dev/**/*.scss'], ['sass']);
+  gulp.watch(['dev/css/*.css'], ['cmq']);
   gulp.watch(['dev/img/*'], reload);
 });
 

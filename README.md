@@ -38,6 +38,13 @@ Using BrowserSync, it runs a relevant task and reloads the browser when any of t
 
 	$ gulp bs
 
+## 4. Combining media queries in CSS
+It processes .css files in 'dev/css' and out put .css in 'dist'.
+
+### Command to run the task:
+
+	$ gulp cmq
+
 ## ToDos in random order
 1. Optimize all files including HTML and concatenated JS files  and copy them to `dist` when all is well and done
 2. Clean up CSS using gulp-uncss
