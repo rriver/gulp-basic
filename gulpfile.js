@@ -12,6 +12,7 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
+var cmq = require('gulp-combine-media-queries');
 
 // Set browsers for autoprefixer
 var AUTOPREFIXER_BROWSERS = [
@@ -55,6 +56,13 @@ gulp.task('sass', function () {
     .pipe(reload({stream:true}));
 });
 
+// Process CSS and combine media queries
+gulp.task('cmq', function () {
+  gulp.src('dev/css/*.css')
+    .pipe(cmq())
+    .pipe(gulp.dest('dist/css'));
+});
+
 // Optimize images in the img folders anywhere
 gulp.task('img', function () {
   return gulp.src('dev/img/**')
@@ -69,5 +77,5 @@ gulp.task('img', function () {
 
 
 // Default task to be run with `gulp`
-gulp.task('default', ['sass','img'], function () {
+gulp.task('default', ['sass','cmq','img'], function () {
 });
