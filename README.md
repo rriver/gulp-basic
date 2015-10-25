@@ -10,7 +10,7 @@ It processes .scss files in `dev` and output .css in `css`.  It also outputs the
 
 - Process .scss files using gulp-ruby-sass and partials in `scss/components`
 - Adds browser prefixes using gulp-autoprefixer
-- Outputs source map file called maps/main.css.map using gulp-sourcemaps
+- Outputs source map file called maps/main.css.map using gulp-sourcemaps in css folder
 
 ### Command to run the task:
 
