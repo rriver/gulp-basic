@@ -12,11 +12,6 @@ It processes .scss files in `dev` and output .css in `css`.  It also outputs the
 - Adds browser prefixes using gulp-autoprefixer
 - Outputs source map file called main.css.map using gulp-ruby-sass
 
-To enable source map, main.scss needs to have the following line at the end:
-```
-/*# sourceMappingURL=main.css.map */
-```
-
 ### Command to run the task:
 
 	$ gulp sass
@@ -43,7 +38,7 @@ It processes .css files in 'dev/css' and out put .css in 'dist'.
 
 ### Command to run the task:
 
-	$ gulp cmq
+	$ gulp mmq
 
 ## ToDos in random order
 1. Optimize all files including HTML and concatenated JS files  and copy them to `dist` when all is well and done
