@@ -9,10 +9,10 @@ Gulp to:
 
 // Load modules
 var gulp = require('gulp');
+var sass = require('gulp-ruby-sass');
 var $ = require('gulp-load-plugins')();
-var browserSync = require('browser-sync');
-var reload = browserSync.reload;
-var cmq = require('gulp-combine-media-queries');
+var browserSync = require('browser-sync').create();
+var mmq = require('gulp-merge-media-queries');
 
 // Set browsers for autoprefixer
 var AUTOPREFIXER_BROWSERS = [
@@ -29,38 +29,36 @@ var AUTOPREFIXER_BROWSERS = [
 
 // Start BrowserSync
 gulp.task('bs', function() {
-  browserSync({
+  browserSync.init({
     notify: false,
     server: {
       baseDir: 'dev'
     }
   });
 
-  gulp.watch(['dev/**/*.html'], reload);
   gulp.watch(['dev/**/*.scss'], ['sass']);
-  gulp.watch(['dev/css/*.css'], ['cmq']);
-  gulp.watch(['dev/img/*'], reload);
+  gulp.watch(['dev/css/*.css'], ['mmq']);
+  gulp.watch(['dev/**/*.html']).on('change', browserSync.reload);
+  gulp.watch(['dev/img/*']).on('change', browserSync.reload);
 });
 
 // Process Sass and notify with Mac notification if any errors
 gulp.task('sass', function () {
-  return gulp.src('dev/scss/*.scss')
-    .pipe($.rubySass({
-      sourcemap: true,
-      sourcemapPath: '../dev/scss',
-      style: 'compact',
-      precision: 4,
-      loadPath: process.cwd() + '/dev/scss'
-    }))
+  return sass('dev/scss/*.scss', { sourcemap: true } )
+    .on('error', sass.logError)
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
+    .pipe($.sourcemaps.write('maps', {
+      includeContent: false,
+      sourceRoot: 'dev'
+    }))
     .pipe(gulp.dest('dev/css'))
-    .pipe(reload({stream:true}));
+    .pipe(browserSync.stream({match: '**/*.css'}));
 });
 
 // Process CSS and combine media queries
-gulp.task('cmq', function () {
+gulp.task('mmq', function () {
   gulp.src('dev/css/*.css')
-    .pipe(cmq())
+    .pipe(mmq())
     .pipe(gulp.dest('dist/css'));
 });
 
@@ -78,5 +76,5 @@ gulp.task('img', function () {
 
 
 // Default task to be run with `gulp`
-gulp.task('default', ['sass','cmq','img'], function () {
+gulp.task('default', ['sass','mmq','img'], function () {
 });

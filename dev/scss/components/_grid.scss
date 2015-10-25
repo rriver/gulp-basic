@@ -25,7 +25,6 @@ $gutter: 2em;
 	float: left;
 }
 
-.grid-4 {
-	width: calc(100%/3);
-}	
+.grid-3 { width: calc(100%/4); }
+.grid-4 { width: calc(100%/3); }
 }
