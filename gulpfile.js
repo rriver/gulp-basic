@@ -9,10 +9,15 @@ Gulp to:
 
 // Load modules
 var gulp = require('gulp');
-var sass = require('gulp-ruby-sass');
 var $ = require('gulp-load-plugins')();
+var sass = require('gulp-ruby-sass');
+var postcss = require('gulp-postcss');
+
 var browserSync = require('browser-sync').create();
-var mmq = require('gulp-merge-media-queries');
+var cssnano = require('cssnano');
+var autoprefixer = require('autoprefixer');
+var mqpacker = require('css-mqpacker');
+
 
 // Set browsers for autoprefixer
 var AUTOPREFIXER_BROWSERS = [
@@ -27,6 +32,13 @@ var AUTOPREFIXER_BROWSERS = [
   'bb >= 10'
 ];
 
+// PostCSS processes
+var processors = [
+  autoprefixer(AUTOPREFIXER_BROWSERS),
+  mqpacker,
+  cssnano
+];
+
 // Start BrowserSync
 gulp.task('bs', function() {
   browserSync.init({
@@ -37,16 +49,16 @@ gulp.task('bs', function() {
   });
 
   gulp.watch(['dev/**/*.scss'], ['sass']);
-  gulp.watch(['dev/css/*.css'], ['mmq']);
+  gulp.watch(['dev/css/*.css'], ['postcss']);
   gulp.watch(['dev/**/*.html']).on('change', browserSync.reload);
   gulp.watch(['dev/img/*']).on('change', browserSync.reload);
 });
 
-// Process Sass and notify with Mac notification if any errors
+// Process Sass
 gulp.task('sass', function () {
   return sass('dev/scss/*.scss', { sourcemap: true } )
     .on('error', sass.logError)
-    .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
+    .pipe(postcss(processors))
     .pipe($.sourcemaps.write('maps', {
       includeContent: false,
       sourceRoot: '../../scss'
@@ -56,9 +68,9 @@ gulp.task('sass', function () {
 });
 
 // Process CSS and combine media queries
-gulp.task('mmq', function () {
+gulp.task('postcss', function () {
   gulp.src('dev/css/*.css')
-    .pipe(mmq())
+    .pipe(postcss(processors))
     .pipe(gulp.dest('dist/css'));
 });
 
@@ -76,5 +88,5 @@ gulp.task('img', function () {
 
 
 // Default task to be run with `gulp`
-gulp.task('default', ['sass','mmq','img'], function () {
+gulp.task('default', ['sass','postcss','img'], function () {
 });

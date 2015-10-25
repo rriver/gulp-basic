@@ -9,14 +9,16 @@
   "author": "Rriver",
   "license": "MIT",
   "devDependencies": {
+    "autoprefixer": "^6.0.3",
     "browser-sync": "^2.9.11",
+    "css-mqpacker": "^4.0.0",
+    "cssnano": "^3.3.1",
     "gulp": "^3.9.0",
-    "gulp-autoprefixer": "3.1.0",
     "gulp-imagemin": "^2.3.0",
     "gulp-load-plugins": "^1.0.0",
-    "gulp-merge-media-queries": "^0.2.1",
     "gulp-newer": "^0.5.1",
     "gulp-notify": "^2.2.0",
+    "gulp-postcss": "^6.0.1",
     "gulp-ruby-sass": "^2.0.5",
     "gulp-size": "^2.0.0",
     "gulp-sourcemaps": "^1.6.0"
