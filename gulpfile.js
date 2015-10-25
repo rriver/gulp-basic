@@ -49,7 +49,7 @@ gulp.task('sass', function () {
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
     .pipe($.sourcemaps.write('maps', {
       includeContent: false,
-      sourceRoot: 'dev'
+      sourceRoot: '../../scss'
     }))
     .pipe(gulp.dest('dev/css'))
     .pipe(browserSync.stream({match: '**/*.css'}));
